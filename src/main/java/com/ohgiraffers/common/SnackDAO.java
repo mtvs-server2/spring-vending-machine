@@ -2,6 +2,7 @@ package com.ohgiraffers.common;
 
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Member;
 import java.util.HashMap;
 
 @Repository
@@ -18,6 +19,7 @@ public class SnackDAO {
     }
 
 
+
     public Snack findSnackBySequence(int sequence) {
         return snackMap.get(sequence);
     }
@@ -29,3 +31,21 @@ public class SnackDAO {
         return myMoney - snackPrice;
     }
 }
+
+    // 간식 번호를 받아 이름 반환
+    //유효하지 않은 번호일시 예외처리(ArithmeticException)
+    public String findSnackbyNumber(int number){
+        // 키값이 5 이상일때
+        try {
+            if (number > 4 || number < 1) {
+                throw new ArithmeticException("1~4 사이의 번호를 입력해주세요");
+            }
+            else
+               return snackMap.get(number).getSnackName();
+        } catch (ArithmeticException e){
+            System.out.println(e.getMessage());
+            throw new ArithmeticException();
+        }
+    }
+}
+
