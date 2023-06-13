@@ -19,6 +19,19 @@ public class SnackDAO {
     }
 
 
+
+    public Snack findSnackBySequence(int sequence) {
+        return snackMap.get(sequence);
+    }
+
+    public int returnMoney(int myMoney, int snackPrice) {
+        if (myMoney < snackPrice){
+            throw new IllegalArgumentException("돈이 부족합니다...");
+        }
+        return myMoney - snackPrice;
+    }
+}
+
     // 간식 번호를 받아 이름 반환
     //유효하지 않은 번호일시 예외처리(ArithmeticException)
     public String findSnackbyNumber(int number){
@@ -35,3 +48,4 @@ public class SnackDAO {
         }
     }
 }
+
