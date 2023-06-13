@@ -18,4 +18,14 @@ public class SnackDAO {
     }
 
 
+    public Snack findSnackBySequence(int sequence) {
+        return snackMap.get(sequence);
+    }
+
+    public int returnMoney(int myMoney, int snackPrice) {
+        if (myMoney < snackPrice){
+            throw new IllegalArgumentException("돈이 부족합니다...");
+        }
+        return myMoney - snackPrice;
+    }
 }
